@@ -207,7 +207,7 @@ export default function TreeDetailPage() {
                 style={{ borderColor: '#86CA6B', padding: '0px' }}
               >
                 <img
-                  src={treeInfoQR}
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${selectedTree.nameEnglish}`)}&color=000000&bgcolor=ffffff`}
                   alt={`QR code containing information about ${selectedTree.nameEnglish}`}
                   className="w-40 sm:w-48 md:w-56"
                   loading="lazy"
