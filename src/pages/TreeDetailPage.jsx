@@ -203,13 +203,13 @@ export default function TreeDetailPage() {
                 Tree Information
               </h3>
               <div 
-                className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-md border-2 flex justify-center mb-6 aspect-square overflow-hidden"
-                style={{ borderColor: '#86CA6B' }}
+                className="bg-white rounded-lg sm:rounded-xl shadow-md border-2 flex justify-center mb-6 w-fit mx-auto"
+                style={{ borderColor: '#86CA6B', padding: '0px' }}
               >
                 <img
                   src={treeInfoQR}
                   alt={`QR code containing information about ${selectedTree.nameEnglish}`}
-                  className="w-40 sm:w-48 md:w-56 h-40 sm:h-48 md:h-56"
+                  className="w-40 sm:w-48 md:w-56"
                   loading="lazy"
                 />
               </div>
@@ -227,13 +227,13 @@ export default function TreeDetailPage() {
                 Wikipedia Link
               </h3>
               <div 
-                className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-md border-2 flex justify-center mb-6 aspect-square overflow-hidden"
-                style={{ borderColor: '#86CA6B' }}
+                className="bg-white rounded-lg sm:rounded-xl shadow-md border-2 flex justify-center mb-6 w-fit mx-auto"
+                style={{ borderColor: '#86CA6B', padding: '0px' }}
               >
                 <img
                   src={wikipediaQR}
                   alt={`QR code linking to Wikipedia page for ${selectedTree.nameEnglish}`}
-                  className="w-40 sm:w-48 md:w-56 h-40 sm:h-48 md:h-56"
+                  className="w-40 sm:w-48 md:w-56"
                   loading="lazy"
                 />
               </div>
