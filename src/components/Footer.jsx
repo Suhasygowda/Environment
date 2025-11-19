@@ -1,7 +1,9 @@
 import { Leaf } from "lucide-react";
 import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+    const navigate = useNavigate();
   return (
     <footer className="bg-[#0B2418] text-white pt-20 pb-10 px-6 md:px-20">
       
@@ -31,9 +33,9 @@ export default function Footer() {
             QUICK LINKS
           </h3>
           <ul className="space-y-2">
-            <li className="hover:text-[#86CA6B] cursor-pointer">Home</li>
+            <li onClick={() => navigate("/")} className="hover:text-[#86CA6B] cursor-pointer">Home</li>
             <li className="hover:text-[#86CA6B] cursor-pointer">About Us</li>
-            <li className="hover:text-[#86CA6B] cursor-pointer">All Trees</li>
+            <li onClick={() => navigate("/")} className="hover:text-[#86CA6B] cursor-pointer">All Trees</li>
           </ul>
         </div>
 
