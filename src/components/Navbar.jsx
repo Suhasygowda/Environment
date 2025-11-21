@@ -278,7 +278,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Leaf, Home, Menu, X } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -286,6 +286,7 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -306,9 +307,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const handleNavigate = (page) => {
-    setMenuOpen(false);
-  };
+
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
@@ -324,7 +323,7 @@ const Navbar = () => {
         }`}>
           {/* Logo - Always visible with responsive sizing */}
           <button
-            onClick={() => handleNavigate('home')}
+            onClick={() => navigate('/')}
             className={`flex items-center gap-2 font-bold transition cursor-pointer flex-shrink-0 ${
               location.pathname === '/'
                 ? (scrolled ? 'text-[#0B2418] hover:text-[#86CA6B]' : 'text-white hover:text-[#86CA6B]')
@@ -338,7 +337,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <button
-              onClick={() => handleNavigate('home')}
+              onClick={() => navigate('/')}
               className={`flex items-center gap-2 cursor-pointer transition ${
                 location.pathname === '/'
                   ? (scrolled ? 'text-[#0B2418] hover:text-[#86CA6B]' : 'text-white hover:text-[#86CA6B]')

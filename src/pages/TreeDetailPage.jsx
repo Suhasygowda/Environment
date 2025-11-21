@@ -30,10 +30,21 @@ export default function TreeDetailPage() {
   );
 
   // Memoized QR codes to prevent regeneration on every render
-  const treeInfoQR = useMemo(
-    () => generateQRImage(`Tree: ${selectedTree?.nameEnglish} | Scientific: ${selectedTree?.scientificName} | Family: ${selectedTree?.family}`),
-    [selectedTree?.id]
-  );
+  const treeInfoQR = useMemo(() => {
+    if (!selectedTree) return '';
+    
+    const treeInfoText = `TREE INFORMATION
+    
+Name (English): ${selectedTree.nameEnglish}
+Name (Kannada): ${selectedTree.nameKannada}
+Scientific Name: ${selectedTree.scientificName}
+Family: ${selectedTree.family}
+
+USES & BENEFITS:
+${selectedTree.uses.map((use, idx) => `${idx + 1}. ${use}`).join('\n')}`;
+    
+    return generateQRImage(treeInfoText);
+  }, [selectedTree?.id]);
 
   const wikipediaQR = useMemo(
     () => generateQRImage(selectedTree?.wikipediaLink || ''),
@@ -207,14 +218,14 @@ export default function TreeDetailPage() {
                 style={{ borderColor: '#86CA6B', padding: '0px' }}
               >
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${selectedTree.nameEnglish}`)}&color=000000&bgcolor=ffffff`}
-                  alt={`QR code containing information about ${selectedTree.nameEnglish}`}
+                  src={treeInfoQR}
+                  alt={`QR code containing detailed information about ${selectedTree.nameEnglish}`}
                   className="w-40 sm:w-48 md:w-56"
                   loading="lazy"
                 />
               </div>
               <p className="text-center text-sm sm:text-base font-semibold" style={{ color: '#86CA6B' }}>
-                Scan to view detailed information
+                Scan to view all details as text
               </p>
             </div>
 
